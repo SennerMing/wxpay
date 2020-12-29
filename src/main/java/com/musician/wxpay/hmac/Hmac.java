@@ -62,7 +62,7 @@ public class Hmac {
             // -- signum 表示通过此构造器生成的整数的符号，可取值为 -1 0 1
             // -- magnitude 一个byte[] 例如：{28,56,125,....}
             //二、toString(radix) 将BigInteger转换为radix进制的字符串
-            System.out.println(new BigInteger(1,skey).toString(16));
+            System.out.println("生成密钥："+new BigInteger(1,skey).toString(16));
             //将HmacMD5生成的key转换为一个16进制的正整数字符串
             String skeystr = new BigInteger(1,skey).toString(16);
 
@@ -75,10 +75,12 @@ public class Hmac {
             mac.update("HelloWorld2".getBytes("UTF-8"));
             byte[] result = mac.doFinal();
             //获得加盐处理过后的密码结果     -- 同样是正整数16进制的字符串
-            System.out.println(new BigInteger(1,result).toString(16));
+            System.out.println("1.生成密钥与明文混合结果："+new BigInteger(1,result).toString(16));
 
             //========================================恢复key进行对比=================================================
             //skeystr 可以将第一步中生成的key保存到数据库中，skeystr可以从数据库中获取
+//            skeystr = "96f40dd8eebe4f85c76843bf18ee7798294ec4cf8f50c83a5a16" +
+//                    "dee3fda5c963d3f3f6399c6b690362898e4705e74b2544380bb1f5154d21964696711932cbac";
             byte[] renew_skey = NumberConvertUtils.hexStr2bytes(skeystr);
             //获得一个HmacMD5实例，并将skeystr恢复
             SecretKey dekey = new SecretKeySpec(renew_skey, "HmacMD5");
@@ -90,8 +92,9 @@ public class Hmac {
             demac.update("HelloWorld2".getBytes("UTF-8"));
             byte[] deresult = demac.doFinal();
             //获得此次用户输入密码及加盐后的结果
-            System.out.println(new BigInteger(1,deresult).toString(16));
+            System.out.println("2.恢复密钥与明文混合结果："+new BigInteger(1,deresult).toString(16));
 
+            System.out.println("两相对比，是否一致，一致则通过密码验证通过！");
             //接着与上面的加盐处理后的密码结果进行对比，如果相同，则成功登录！
 
 
