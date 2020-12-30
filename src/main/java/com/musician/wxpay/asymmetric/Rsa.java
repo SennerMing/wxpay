@@ -83,4 +83,27 @@ class Person {
         cipher.init(Cipher.DECRYPT_MODE, this.sk);
         return cipher.doFinal(input);
     }
+
+    /**
+     * RSA的公钥和私钥都可以通过getEncoded()方法获得以byte[]表示的二进制数据，并根据需要保存到文件中。
+     * 要从byte[]数组恢复公钥或私钥，可以这么写：
+     *
+     *  byte[] pkData = ...
+     *  byte[] skData = ...
+     *  KeyFactory kf = KeyFactory.getInstance("RSA");
+     *  // 恢复公钥:
+     *  X509EncodedKeySpec pkSpec = new X509EncodedKeySpec(pkData);
+     *  PublicKey pk = kf.generatePublic(pkSpec);
+     *  // 恢复私钥:
+     *  PKCS8EncodedKeySpec skSpec = new PKCS8EncodedKeySpec(skData);
+     *  PrivateKey sk = kf.generatePrivate(skSpec);
+     *
+     *  以RSA算法为例，它的密钥有256/512/1024/2048/4096等不同的长度。长度越长，密码强度越大，当然计算速度也越慢。
+     *  如果修改待加密的byte[]数据的大小，可以发现，使用512bit的RSA加密时，明文长度不能超过53字节，使用1024bit的RSA加密时，
+     *  明文长度不能超过117字节，这也是为什么使用RSA的时候，总是配合AES一起使用，即用AES加密任意长度的明文，用RSA加密AES口令。
+     *  此外，只使用非对称加密算法不能防止中间人攻击。
+     *
+     */
+
+
 }
