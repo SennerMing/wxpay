@@ -43,35 +43,38 @@ public class Pbe {
             String password = "hello123456";
             //16字节随机的Salt
 
+            //Initialization Vector
+            byte[] salt = SecureRandom.getInstanceStrong().generateSeed(16);
+            System.out.printf("IV:%#x\n",new BigInteger(1, salt));
+
             //加密
             byte[] data = message.getBytes("UTF-8");
-            byte[] encrypted = encrypt(password, data);
+            byte[] encrypted = encrypt(password, salt, data);
             System.out.println("encrypted:" + Base64.getEncoder().encodeToString(encrypted));
 
             //==============================================AES的CBC模式+PEB解密===================================================
-            byte[] decrypted = decrypt(password, encrypted);
+            byte[] decrypted = decrypt(password, salt, encrypted);
             System.out.println("decrypted:"+new String(decrypted,"UTF-8"));
 
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * AES的CBC模式+PBE口令算法
+     * 128bitAES的CBC模式+PBE口令算法
      * @param password
      * @param encrypted
      * @return
      */
-    public static byte[] decrypt(String password, byte[] encrypted) {
+    public static byte[] decrypt(String password,byte[] salt, byte[] encrypted) {
 
         try {
             PBEKeySpec pbeKeySpec = new PBEKeySpec(password.toCharArray());
             SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBEwithSHA1and128bitAES-CBC-BC");
             SecretKey secretKey = secretKeyFactory.generateSecret(pbeKeySpec);
 
-            byte[] salt = SecureRandom.getInstanceStrong().generateSeed(16);
-            System.out.printf("salt:%#x\n",new BigInteger(1, salt));
+            //Initialization Vector
             PBEParameterSpec pbeParameterSpec = new PBEParameterSpec(salt, 1000);
 
             Cipher cipher = Cipher.getInstance("PBEwithSHA1and128bitAES-CBC-BC");
@@ -93,20 +96,19 @@ public class Pbe {
     }
 
     /**
-     * 加密处理，AES算法的CBC模式+PBE
+     * 加密处理，128bitAES算法的CBC模式+PBE
      * @param password
      * @param data
      * @return
      */
-    public static byte[] encrypt(String password, byte[] data) {
+    public static byte[] encrypt(String password,byte[] salt, byte[] data) {
 
         try {
             PBEKeySpec pbeKeySpec = new PBEKeySpec(password.toCharArray());
             SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBEwithSHA1and128bitAES-CBC-BC");
             SecretKey secretKey = secretKeyFactory.generateSecret(pbeKeySpec);
 
-            byte[] salt = SecureRandom.getInstanceStrong().generateSeed(16);
-            System.out.printf("salt:%#x\n",new BigInteger(1, salt));
+            //Initialization Vector
             PBEParameterSpec pbeParameterSpec = new PBEParameterSpec(salt, 1000);
 
             Cipher cipher = Cipher.getInstance("PBEwithSHA1and128bitAES-CBC-BC");

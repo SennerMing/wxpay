@@ -4,6 +4,7 @@ import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -142,6 +143,7 @@ public class Aes {
             // SecureRandom与Random相比是密码安全的随机数，其使用操作系统收集的一些随机事件作为种子，
             SecureRandom secureRandom = SecureRandom.getInstanceStrong();
             byte[] iv = secureRandom.generateSeed(16);
+            System.out.println("IV:"+new BigInteger(1,iv).toString(16));
             IvParameterSpec ivps = new IvParameterSpec(iv);
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivps);
             byte[] data = cipher.doFinal(data_cbc);
