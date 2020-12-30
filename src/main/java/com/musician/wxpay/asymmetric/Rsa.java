@@ -12,6 +12,22 @@ import java.security.*;
  *    -- 对称加密的实现中重要的一环是需要协商密钥
  *    -- 非对称加密可以对外开放自己的公钥
  *
+ *    非对称加密，公钥放出去，随便来拿加密，私钥在我这，谁都解不开
+ *
+ *    中间人攻击：
+ *    正常非对称加密流程：
+ *    Tom想发给Bob一些信息, 首先Bob需先公开自己的 Public Key给Tom, 那么Tom可以使用Bob给的 Public Key把将要发送的信息加密发送,
+ *    最后Bob使用自己的 Private Key解密接收到的密文. 这样第三人即使截取了密文如果没有Bob的 Private Key也无法解析出密文.
+ *    相反Bob想发给Tom一些信息, 显然Tom也可以生成自己的 Public Key给Bob, 以此走相关加解密过成.
+ *
+ *    中间人的加入：
+ *    1.Tom生成密钥(a_pri/a_pub), Bob生成密钥(b_pri/b_pub)两者都公开公钥 a_pub和 b_pub为了相互传递信息.
+ *    第三人(窃听者)也生成密钥(ca_pri/ca_pub)和(cb_pri/cb_pub) 生成两对.
+ *    2.首先John(窃听者)会把Tom的公钥 a_pub截取保存, 再把自己的 ca_pub发给Bob, 然后Bob的公钥 b_pub截取保存,
+ *    再把自己的 cb_pub发给Tom. 他们两者都会认为自己拿到的公钥是对方的.
+ *    3.此时Tom和Bob相互传递自认为对方的公钥(实际是窃听者John的)加密后的信息发给对方, John在两边接收密文通过自己的私钥
+ *    (ca_pri, cb_pri)解密, 再发给各方 完美扮演了中间人的角色.
+ *
  * @Author: LXR
  * @since: 2020/12/30 10:59
  * @Version: 1.0
