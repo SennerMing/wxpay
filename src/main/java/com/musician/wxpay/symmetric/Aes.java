@@ -13,7 +13,7 @@ import java.util.Base64;
 
 
 /**
- * @ClassName: Aes
+ * @ClassName: Aes Advanced Encryption Standard
  * @Description:
  * =================================================================================================
  *      Symmetric encryption（对称加密），就是传统的用一个密码进行加密和解密。

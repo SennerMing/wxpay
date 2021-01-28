@@ -1,0 +1,56 @@
+server:
+  port: 8848
+  max-http-header-size: 4048576
+  tomcat:
+    max-threads: 800
+    max-connections: 2000
+    accept-count: 1000
+    min-spare-threads: 200
+# DataSource Config
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.10.174:3306/law_enforcement_schema?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: Cetc28-sjyy
+    druid:
+      # 初始化时建立物理连接的个数
+      initial-size: 50
+      # 最大连接池数量
+      max-active: 150
+      # 最小连接池数量
+      min-idle: 50
+      # 获取连接时最大等待时间，单位毫秒
+      max-wait: 60000
+      validation-query: SELECT 1 FROM DUAL
+      # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效
+      test-while-idle: true
+      # 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能
+      test-on-borrow: false
+      # 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能
+      test-on-return: false
+      # 连接保持空闲而不被驱逐的最小时间
+      min-evictable-idle-time-millis: 300000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      filter:
+        commons-log:
+          connection-logger-name: stat,wall
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+      # asyncInit是1.1.4中新增加的配置，如果有initialSize数量较多时，打开会加快应用启动时间
+      async-init: true
+
+mybatis-plus:
+  # type-aliases扫描路径
+  # type-aliases-package:
+  # mapper xml实现扫描路径
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto

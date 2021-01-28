@@ -1,5 +1,6 @@
 package com.musician.wxpay;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *    与RSA相结合的签名算法HashwithRSA、DSA、ECDSA，大部分都抄自廖雪峰
  */
 @SpringBootApplication
+@MapperScan("com.baomidou.mybatisplus.samples.quickstart.mapper")
 public class WxpayApplication {
 
     public static void main(String[] args) {
