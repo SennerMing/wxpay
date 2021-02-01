@@ -10,10 +10,10 @@ server:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.10.174:3306/law_enforcement_schema?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
-    username: root
-    password: Cetc28-sjyy
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: *****
+    username: ****
+    password: *****
     druid:
       # 初始化时建立物理连接的个数
       initial-size: 50

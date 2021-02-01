@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("com.baomidou.mybatisplus.samples.quickstart.mapper")
+@MapperScan("com.musician.wxpay.dao")
 public class WxpayApplication {
 
     public static void main(String[] args) {
