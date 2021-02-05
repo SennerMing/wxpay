@@ -16,6 +16,8 @@ public interface SensitiveTypeService {
 
     int newSensitiveType(SensitiveType sensitiveType);
 
+    List<SensitiveType> getSensitiveTypeByOrgId(int orgId);
+
     int renameSensitiveType(SensitiveType sensitiveType);
 
     int removeSensitiveType(int id);

@@ -1,6 +1,5 @@
 package com.musician.wxpay.controller;
 
-import com.musician.wxpay.dao.SensitiveTypeMapper;
 import com.musician.wxpay.dto.OrgSensitiveInfo;
 import com.musician.wxpay.entity.SensitiveType;
 import com.musician.wxpay.entity.SensitiveWord;
@@ -17,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -49,10 +50,23 @@ public class SensitiveController {
         return sensitiveTypeService.newSensitiveType(sensitiveType);
     }
 
+    @GetMapping("/api/v1/getOrgSensitiveType")
+    @ResponseBody
+    public List<SensitiveType> getOrgSensitiveType(){
+        int orgId = 1;
+        return sensitiveTypeService.getSensitiveTypeByOrgId(orgId);
+    }
+
     @PostMapping("/api/v1/addSensitiveWord")
     @ResponseBody
     public int addOrgSensitiveType(@RequestBody @Validated SensitiveWord sensitiveWord) {
         return sensitiveWordService.newSensitiveWord(sensitiveWord);
+    }
+
+    @GetMapping("/api/v1/getSensitiveWordByTypeId")
+    @ResponseBody
+    public List<SensitiveWord> getSensitiveWordByTypeId(@RequestParam @Validated int typeId) {
+        return sensitiveWordService.packageSensitiveWordsByType(typeId);
     }
 
     @GetMapping("/api/v1/searchSensitiveInfoByKeyWord")

@@ -75,6 +75,13 @@ public class SensitiveTypeServiceImpl implements SensitiveTypeService {
     }
 
     @Override
+    public List<SensitiveType> getSensitiveTypeByOrgId(int orgId) {
+        LambdaQueryWrapper<SensitiveType> queryWrapper = new QueryWrapper<SensitiveType>().lambda()
+                .eq(SensitiveType::getOrgId, orgId);
+        return sensitiveTypeMapper.selectList(queryWrapper);
+    }
+
+    @Override
     public int renameSensitiveType(SensitiveType sensitiveType) {
         Wrapper<SensitiveType> sensitiveTypeWrapper = Wrappers.<SensitiveType>lambdaUpdate()
                 .set(SensitiveType::getTypeName, sensitiveType.getTypeName()).eq(SensitiveType::getId, sensitiveType.getId());
@@ -109,6 +116,8 @@ public class SensitiveTypeServiceImpl implements SensitiveTypeService {
         int wordsChange = sensitiveWordService.changeSensitiveWordsTypeIdTo(removeTypeId, targetTypeId);
         int typeRemove = this.removeSensitiveType(removeTypeId);
         int duplicateCount = sensitiveWordService.distinctSensitiveWords(targetTypeId);
+        int duplicateRemoval = sensitiveWordService.duplicateRemoval(targetTypeId);
+        log.info("合并去重了["+duplicateRemoval+"]条数据！");
         return duplicateCount;
     }
 }

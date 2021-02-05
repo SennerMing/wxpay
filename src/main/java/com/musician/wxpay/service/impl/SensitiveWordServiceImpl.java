@@ -49,6 +49,7 @@ public class SensitiveWordServiceImpl implements SensitiveWordService {
         int count = sensitiveWordMapper.selectCount(queryWrapper);
         if(count > 0){
             log.info("已存在");
+            return -1;
         }else{
             sensitiveWordMapper.insert(sensitiveWord);
         }
@@ -90,5 +91,10 @@ public class SensitiveWordServiceImpl implements SensitiveWordService {
             }
         }
         return count;
+    }
+
+    @Override
+    public int duplicateRemoval(int typeId) {
+        return sensitiveWordMapper.duplicateRemoval(typeId);
     }
 }

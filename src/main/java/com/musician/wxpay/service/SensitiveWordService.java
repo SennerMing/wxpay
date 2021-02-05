@@ -27,4 +27,6 @@ public interface SensitiveWordService {
     int changeSensitiveWordsTypeIdTo(int originTypeId, int newSensitiveTypeId);
 
     int distinctSensitiveWords(int typeId);
+
+    int duplicateRemoval(int typeId);
 }
