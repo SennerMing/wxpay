@@ -15,8 +15,8 @@ spring:
 #    username: law_en2021
 #    password: W2x0CTcbRH@2020
     url: jdbc:mysql://192.168.10.174:3306/irregular_check?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
-    username: root
-    password: Cetc28-sjyy
+    username: ****
+    password: ****
     druid:
       # 初始化时建立物理连接的个数
       initial-size: 50
