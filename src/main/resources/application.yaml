@@ -11,10 +11,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://192.168.10.199:3306/law_enforcement_schema?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
-#    username: law_en2021
-#    password: W2x0CTcbRH@2020
-    url: jdbc:mysql://192.168.10.174:3306/irregular_check?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
+
     username: ****
     password: ****
     druid:
