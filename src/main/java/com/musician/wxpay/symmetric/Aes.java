@@ -87,8 +87,6 @@ public class Aes {
             byte[] decrypted_cbc = decryptCBC(key_cbc, encrypted_cbc);
             System.out.println("Decrypted_EBC："+new String(decrypted_cbc,"UTF-8"));
 
-
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

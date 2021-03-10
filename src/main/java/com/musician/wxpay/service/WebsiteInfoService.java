@@ -1,7 +1,5 @@
 package com.musician.wxpay.service;
 
-import com.musician.wxpay.entity.WebsiteInfo;
-
 import java.util.List;
 
 /**

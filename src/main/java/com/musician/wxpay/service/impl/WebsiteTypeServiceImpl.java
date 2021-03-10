@@ -6,10 +6,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 
-import com.musician.wxpay.dao.WebsiteTypeMapper;
-import com.musician.wxpay.dto.OrgWebsiteInfo;
-import com.musician.wxpay.entity.WebsiteInfo;
-import com.musician.wxpay.entity.WebsiteType;
 import com.musician.wxpay.service.WebsiteInfoService;
 import com.musician.wxpay.service.WebsiteTypeService;
 import lombok.extern.slf4j.Slf4j;

@@ -3,8 +3,6 @@ package com.musician.wxpay.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.musician.wxpay.dao.WebsiteInfoMapper;
-import com.musician.wxpay.entity.WebsiteInfo;
 import com.musician.wxpay.service.WebsiteInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

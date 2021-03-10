@@ -1,8 +1,5 @@
 package com.musician.wxpay.service;
 
-import com.musician.wxpay.dto.OrgWebsiteInfo;
-import com.musician.wxpay.entity.WebsiteType;
-
 import java.util.List;
 
 public interface WebsiteTypeService {

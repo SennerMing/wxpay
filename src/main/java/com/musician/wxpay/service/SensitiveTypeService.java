@@ -1,9 +1,6 @@
 package com.musician.wxpay.service;
 
 
-import com.musician.wxpay.dto.OrgSensitiveInfo;
-import com.musician.wxpay.entity.SensitiveType;
-
 import java.util.List;
 
 public interface SensitiveTypeService {

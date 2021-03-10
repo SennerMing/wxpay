@@ -1,10 +1,6 @@
 package com.musician.wxpay.service;
 
-import com.musician.wxpay.entity.SensitiveType;
-import com.musician.wxpay.entity.SensitiveWord;
-
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author: LXR

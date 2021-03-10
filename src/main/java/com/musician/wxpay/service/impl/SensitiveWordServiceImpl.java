@@ -3,16 +3,12 @@ package com.musician.wxpay.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.musician.wxpay.dao.SensitiveWordMapper;
-import com.musician.wxpay.entity.SensitiveType;
-import com.musician.wxpay.entity.SensitiveWord;
 import com.musician.wxpay.service.SensitiveWordService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author: LXR

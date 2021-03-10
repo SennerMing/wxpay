@@ -4,10 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.musician.wxpay.dao.SensitiveTypeMapper;
-import com.musician.wxpay.dto.OrgSensitiveInfo;
-import com.musician.wxpay.entity.SensitiveType;
-import com.musician.wxpay.entity.SensitiveWord;
 import com.musician.wxpay.service.SensitiveTypeService;
 import com.musician.wxpay.service.SensitiveWordService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author: LXR
