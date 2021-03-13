@@ -3,66 +3,71 @@ package com.musician.wxpay.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * @author: LXR
- * @since: 2021/2/2 13:21
- */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Accessors(chain = true)
-@TableName(value = "tab_irregular_check")
-public class IrregularCheck implements Serializable {
-
-    private static final long serialVersionUID = -6213506016372191383L;
-
-    private Long id;
+@TableName(value = "tab_payment_result")
+public class PaymentResult {
+    private Integer id;
 
     @TableField
-    private String title;
+    private String mch_id;
 
     @TableField
-    private String url;
+    private String outTradeNo;
 
     @TableField
-    private String websiteType;
-
-    @TableField
-    private String websiteName;
+    private String userId;
 
     @TableField
     private String orgId;
 
     @TableField
-    private String orgName;
+    private Integer checkConfirm;
 
     @TableField
-    private String icpNo;
+    private String appId;
 
     @TableField
-    private String sensitiveTypes;
+    private String nonceStr;
 
     @TableField
-    private String sensitiveWords;
+    private String sign;
 
     @TableField
+    private String openId;
+
+    @TableField
+    private String isSubscribe;
+
+    @TableField
+    private String tradeType;
+
+    @TableField
+    private String bankType;
+
+    @TableField
+    private String totalFee;
+
+    @TableField
+    private String cashFee;
+
+    @TableField
+    private String transactionId;
+
+    @TableField
+    private String tradeState;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime checkDate;
-
-    @TableField
-    private String content;
+    @DateTimeFormat(pattern = "yyyyMMddHHmmss")
+    private LocalDateTime timeEnd;
 
     @TableField
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
@@ -73,5 +78,6 @@ public class IrregularCheck implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime lastModifiedTime;
+
 
 }

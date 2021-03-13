@@ -15,14 +15,5 @@ class WxpayApplicationTests {
     void contextLoads() {
     }
 
-    @Autowired
-    private SensitiveTypeMapper sensitiveTypeMapper;
-
-    @Test
-    public void testSelect() {
-        System.out.println("----- selectAll method test ------");
-        List<SensitiveType> sensitiveTypeList = sensitiveTypeMapper.selectList(null);
-        System.out.println(sensitiveTypeList.size());
-    }
 
 }

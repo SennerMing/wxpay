@@ -1,0 +1,14 @@
+wxpay:
+  confidential:
+    #商户号ID，申请完商户后会得到
+    mch_id: ***************
+    #在商户安全中心，设置的API密钥
+    api_key: ***************
+    #微信开放平台认证应用的ID，申请完开发者账户并且申请完应用后会得到
+    app_id: ***************
+    #微信开放平台认证应用的密钥，申请完开发者账户并且申请完应用后会得到与app_id一块
+    app_secret: ***************
+  url:
+    unifiedorder_url: https://api.mch.weixin.qq.com/pay/unifiedorder
+    pre_pay_notify_url: https://www.yuqing.lescity.com.cn/api/v1/wxNotify
+    order_query_url: https://api.mch.weixin.qq.com/pay/orderquery
